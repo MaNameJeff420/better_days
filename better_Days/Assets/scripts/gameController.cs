@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class gameController : MonoBehaviour
 {
+    public int player_one_character;
+    public int player_two_character;
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
