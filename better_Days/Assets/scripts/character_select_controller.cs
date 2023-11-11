@@ -6,6 +6,8 @@ public class character_select_controller : MonoBehaviour
 {
     private gameController gameController;
     private int local_character = 0;
+    [SerializeField] private GameObject map_screen;
+    [SerializeField] private GameObject character_screen;
     private void Start()
     {
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>() ;
@@ -33,6 +35,14 @@ public class character_select_controller : MonoBehaviour
             yield return null;
         }
         gameController.player_two_character = local_character;
+        character_screen.SetActive(false);
+        map_screen.SetActive(true);
+        local_character = 0;
+        while (local_character == 0)
+        {
+            yield return null;
+        }
+        gameController.map_number = local_character;
     }
 
 }

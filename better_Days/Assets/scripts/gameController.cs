@@ -7,6 +7,7 @@ public class gameController : MonoBehaviour
 {
     public int player_one_character;
     public int player_two_character;
+    public int map_number = 0;
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -22,6 +23,10 @@ public class gameController : MonoBehaviour
             yield return null;
         }
         SceneManager.LoadScene(1);
-
+        while (map_number == 0)
+        {
+            yield return null;
+        }
+        SceneManager.LoadScene(2);
     }
 }
