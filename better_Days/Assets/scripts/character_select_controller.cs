@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class character_select_controller : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class character_select_controller : MonoBehaviour
     private int local_character = 0;
     [SerializeField] private GameObject map_screen;
     [SerializeField] private GameObject character_screen;
+    [SerializeField] private TextMeshProUGUI character_text;
     private void Start()
     {
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>() ;
@@ -30,6 +32,7 @@ public class character_select_controller : MonoBehaviour
         }
         gameController.player_one_character = local_character;
         local_character = 0;
+        character_text.text = "Player 2 pick";
         while (local_character == 0)
         {
             yield return null;
