@@ -5,6 +5,7 @@ using UnityEngine;
 public class player_movement : MonoBehaviour
 {
     [SerializeField] private int player_number;
+    private bool movement_enabled = false;
 
     private bool move_right_pressed;
     private bool move_left_pressed;
@@ -21,12 +22,13 @@ public class player_movement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        StartCoroutine(enable_movement());
     }
 
     void Update()
     {
         gather_input();
-        playermovement();
+        if(movement_enabled){ playermovement();}
     }
 
     void gather_input()
@@ -73,5 +75,11 @@ public class player_movement : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(ground_check.position, ground_check_radius);
+    }
+
+    private IEnumerator enable_movement()
+    {
+        yield return new WaitForSeconds(1.5f);
+        movement_enabled = true;
     }
 }
